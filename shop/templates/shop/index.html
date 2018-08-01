@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Store</title>
+
+</head>
+<body>
+
+<h1> List of all products </h1>
+
+{% if allproducts %}
+    <ul>
+    {% for product in allproducts %}
+        <li><p>{{ product.p_name }}</p> Price: {{ product.p_price }}</li><hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No products in the store yet.</p>
+{% endif %}
+</body>
+
+</html>
+
