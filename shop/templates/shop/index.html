@@ -11,7 +11,8 @@
 {% if allproducts %}
     <ul>
     {% for product in allproducts %}
-        <li><p>{{ product.p_name }}</p> Price: {{ product.p_price }}</li><hr>
+        <li><p><a href='/shop/product/{{ product.slug }}/'>{{ product.p_name }}</a><br /></p>
+            Price: {{ product.p_price }}</li><hr>
     {% endfor %}
     </ul>
 {% else %}

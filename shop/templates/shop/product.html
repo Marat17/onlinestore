@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product</title>
+</head>
+<body>
+	<div>
+	{% if product %}
+		<h1>{{ product.p_name }}</h1>
+		<ul>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}<br>
+        <a href='{{ product.category.url }}'>{{ product.category.c_name }}</ul>
+	{% else %}
+		This specified product does not exist
+	{% endif %}
+	</div>
+	<div>
+			<a href="/shop/">Index</a><br />
+    </div>
+</body>
+</html>

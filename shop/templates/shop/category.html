@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Category</title>
+</head>
+<body>
+	<div>
+	{% if category %}
+		<h1>{{ category.c_name }}</h1>
+		{% if products %}
+			<ul>
+			{% for product in products %}
+                <li><a href='{{ product.url }}'>{{ product.p_name }}</a></li>
+            {% endfor %}
+			</ul>
+		{% else %}
+			<strong>No pages currently in category.</strong>
+		{% endif %}
+	{% else %}
+		This specified category does not exist
+	{% endif %}
+        <a href="/shop/">Index</a><br />
+	</div>
+
+</body>
+</html>
