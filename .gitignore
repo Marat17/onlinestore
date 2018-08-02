@@ -105,7 +105,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-.idea/workspace.xml
 onlinestore/__pycache__/
 /.idea/
 shop/migrations/0001_initial.py
