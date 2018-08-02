@@ -21,7 +21,7 @@ class Product(models.Model):
     p_price = models.IntegerField()
     p_description = models.TextField(max_length=140)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True, default=0)
+    slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.p_name)
