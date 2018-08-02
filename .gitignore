@@ -110,3 +110,8 @@ onlinestore/__pycache__/
 /.idea/
 shop/migrations/0001_initial.py
 shop/migrations/0002_auto_20180801_2030.py
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/onlinestore.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
