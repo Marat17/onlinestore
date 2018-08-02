@@ -10,7 +10,7 @@
 		{% if products %}
 			<ul>
 			{% for product in products %}
-                <li><a href='{{ product.url }}'>{{ product.p_name }}</a></li>
+                <li><a href='/shop/product/{{ product.slug }}/'>{{ product.p_name }}</a></li>
             {% endfor %}
 			</ul>
 		{% else %}
