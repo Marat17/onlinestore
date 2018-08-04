@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
 	<title>Category</title>
 </head>
 <body>
@@ -10,7 +13,8 @@
 		{% if products %}
 			<ul>
 			{% for product in products %}
-                <li><a href='/shop/product/{{ product.slug }}/'>{{ product.p_name }}</a></li>
+                <li><a href='/shop/product/{{ product.slug }}/'>{{ product.p_name }}<br>
+					Price: {{ product.p_price }}</a></li><hr>
             {% endfor %}
 			</ul>
 		{% else %}
@@ -19,7 +23,7 @@
 	{% else %}
 		This specified category does not exist
 	{% endif %}
-        <a href="/shop/">Index</a><br />
+        <a href="/shop/">Main page</a><br />
 	</div>
 
 </body>

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
 	<title>Product</title>
 </head>
 <body>
 	<div>
 	{% if product %}
 		<h1>{{ product.p_name }}</h1>
-		<ul>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}<br>
+        <ul><p>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}</p><br>
 			<a href='/shop/category/{{ product.category.slug }}/'>{{ product.category.c_name }}</a></ul>
 	{% else %}
 		This specified product does not exist
 	{% endif %}
 	</div>
 	<div>
-			<a href="/shop/">Index</a><br />
+			<a href="/shop/">Main page</a><br />
     </div>
 </body>
 </html>

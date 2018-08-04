@@ -2,9 +2,9 @@ from django.shortcuts import render
 from .models import Product, Category
 
 def index(request):
-    allproducts = Product.objects.order_by('p_price')
+    allcategories = Category.objects.all()
     context = {
-        'allproducts': allproducts
+        'allcategories': allcategories
     }
     return render(request, 'shop/index.html', context)
 
