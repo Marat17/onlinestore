@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
+	<title>Cart</title>
+</head>
+<body>
+	<div>
+	{% if elements %}
+        <ul>
+		{% for element in elements %}
+            <li><a href='/shop/product/{{ product.slug }}/'>{{ element.product.p_name }}<br>
+			Price: {{ element.product.p_price }}</a></li><hr>
+        {% endfor %}
+		</ul>
+	{% else %}
+		<strong>No products in cart.</strong>
+	{% endif %}
+        <a href="/shop/">Main page</a><br />
+	</div>
+
+</body>
+</html>

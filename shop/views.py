@@ -1,5 +1,12 @@
 from django.shortcuts import render
-from .models import Product, Category
+from .models import Product, Category, ElementInCart
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+from django.http import HttpResponseRedirect
+from django.views.generic.base import View
+from django.contrib.auth import logout
 
 def index(request):
     allcategories = Category.objects.all()
@@ -32,3 +39,59 @@ def show_category(request, category_name_slug):
         context['products'] = None
 
     return render(request, 'shop/category.html', context)
+
+
+def cart(request):
+    context = {}
+    try:
+        elements = ElementInCart.objects.get
+        context['elements'] = elements
+    except ElementInCart.DoesNotExist:
+        context['elements'] = None
+
+    return render(request, 'shop/cart.html', context)
+
+
+class RegisterFormView(FormView):
+    form_class = UserCreationForm
+
+    # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
+    # В данном случае указана ссылка на страницу входа для зарегистрированных пользователей.
+    success_url = ""
+
+    # Шаблон, который будет использоваться при отображении представления.
+    template_name = "shop/register.html"
+
+    def form_valid(self, form):
+        # Создаём пользователя, если данные в форму были введены корректно.
+        form.save()
+
+        # Вызываем метод базового класса
+        return super(RegisterFormView, self).form_valid(form)
+
+
+class LoginFormView(FormView):
+    form_class = AuthenticationForm
+
+    # Аналогично регистрации, только используем шаблон аутентификации.
+    template_name = "shop/login.html"
+
+    # В случае успеха перенаправим на главную.
+    success_url = "/"
+
+    def form_valid(self, form):
+        # Получаем объект пользователя на основе введённых в форму данных.
+        self.user = form.get_user()
+
+        # Выполняем аутентификацию пользователя.
+        login(self.request, self.user)
+        return super(LoginFormView, self).form_valid(form)
+
+
+class LogoutView(View):
+    def get(self, request):
+        # Выполняем выход для пользователя, запросившего данное представление.
+        logout(request)
+
+        # После чего, перенаправляем пользователя на главную страницу.
+        return HttpResponseRedirect("/")
