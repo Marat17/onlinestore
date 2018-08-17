@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Product, Category, ElementInCart
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
+from .models import Product, Category, ElementInCart, Cart
 from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,6 +8,7 @@ from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.contrib.auth import logout
+from .forms import CartAddProductForm
 
 def index(request):
     allcategories = Category.objects.all()
@@ -57,7 +59,7 @@ class RegisterFormView(FormView):
 
     # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
     # В данном случае указана ссылка на страницу входа для зарегистрированных пользователей.
-    success_url = ""
+    success_url = "/shop/login/"
 
     # Шаблон, который будет использоваться при отображении представления.
     template_name = "shop/register.html"
