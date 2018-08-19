@@ -15,6 +15,12 @@
 	{% else %}
 		This specified product does not exist
 	{% endif %}
+
+	<form action="{% url 'cart_add' product.id %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+</form>
 	</div>
 	<div>
 			<a href="/shop/">Main page</a><br />

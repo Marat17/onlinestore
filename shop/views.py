@@ -25,6 +25,8 @@ def show_product(request, product_name_slug):
         context['product'] = product
     except Product.DoesNotExist:
         context['product'] = None
+    cart_product_form = CartAddProductForm()
+    context['cart_product_form'] = cart_product_form
 
     return render(request, 'shop/product.html', context)
 
@@ -43,15 +45,6 @@ def show_category(request, category_name_slug):
     return render(request, 'shop/category.html', context)
 
 
-def cart(request):
-    context = {}
-    try:
-        elements = ElementInCart.objects.get
-        context['elements'] = elements
-    except ElementInCart.DoesNotExist:
-        context['elements'] = None
-
-    return render(request, 'shop/cart.html', context)
 
 
 class RegisterFormView(FormView):
@@ -97,3 +90,27 @@ class LogoutView(View):
 
         # После чего, перенаправляем пользователя на главную страницу.
         return HttpResponseRedirect("/")
+
+
+@require_POST
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product,
+                 quantity=cd['quantity'],
+                 update_quantity=cd['update'])
+    return redirect('cart')
+
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart')
+
+def cart_detail(request):
+    cart = Cart(request)
+    return render(request, 'shop/cart.html', {'cart': cart})
+

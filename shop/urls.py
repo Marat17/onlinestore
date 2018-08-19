@@ -8,5 +8,7 @@ urlpatterns = [
 	re_path(r'^register/$', views.RegisterFormView.as_view(), name = 'register'),
 	re_path(r'^login/$', views.LoginFormView.as_view(), name = 'login'),
 	re_path(r'^logout/$', views.LogoutView.as_view(), name = 'logout'),
-	re_path(r'^cart/$', views.cart, name = 'cart'),
+	re_path(r'^cart/$', views.cart_detail, name = 'cart'),
+	re_path(r'^add/(?P<product_id>\d+)/$', views.cart_add, name='cart_add'),
+	re_path(r'^remove/(?P<product_id>\d+)/$', views.cart_remove, name='cart_remove'),
 ]
