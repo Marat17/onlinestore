@@ -17,7 +17,8 @@ from django.conf.urls import url
 from django.urls import path, include
 from shop import views
 from django.contrib import admin
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='mainpage'),
@@ -25,3 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^orders/', include(('orders.urls', 'orders'), namespace='orders')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -22,6 +22,7 @@ class Product(models.Model):
     p_name = models.CharField(max_length=80)
     p_price = models.IntegerField()
     p_description = models.TextField(max_length=140)
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
 
