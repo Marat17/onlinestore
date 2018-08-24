@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "celerytest123@gmail.com"
 EMAIL_HOST_PASSWORD = "Celery123"
 EMAIL_USE_TLS = True
+
+#PayPal
+PAYPAL_RECEIVER_EMAIL = 'muhutdinov@hotmail.com'
+PAYPAL_TEST = True
