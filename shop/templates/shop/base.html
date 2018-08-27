@@ -1,10 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}My shop{% endblock %}</title>
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'shop/favicon.ico' %}"
+type="image/x-icon">
 </head>
 <body>
 <div id="header">
