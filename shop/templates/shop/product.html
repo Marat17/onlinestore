@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "shop/base.html" %}
+
+{% block title %}Product{% endblock %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
-	<link rel="shortcut icon" href="{% static 'shop/favicon.ico' %}"
-type="image/x-icon">
-	<title>Product</title>
-</head>
+{% block content %}
 <body>
 	<div>
 	{% if product %}
@@ -18,7 +14,9 @@ type="image/x-icon">
 		This specified product does not exist
 	{% endif %}
 		<a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                    <img src="{% if product.image %}{{ product.image.url }}
+                    {% else %}{% static 'shop/no_image.png' %}
+                    {% endif %}">
         </a>
 
 	<form action="{% url 'cart_add' product.id %}" method="post">
@@ -31,4 +29,4 @@ type="image/x-icon">
 			<a href="/shop/">Main page</a><br />
     </div>
 </body>
-</html>
+{% endblock %}

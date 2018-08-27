@@ -17,15 +17,14 @@ def order_create(request):
                                          product=item['product'],
                                          price=item['price'],
                                          quantity=item['quantity'])
-                # очистка корзины
-                cart.clear()
-                # запуск асинхронной задачи
-                order_created.delay(order.id)
-                # set the order in the session
-                request.session['order_id']=order.id
-                # redirect to the payment
-
-            return redirect(reverse('payment:process'))
+            # очистка корзины
+            cart.clear()
+            # запуск асинхронной задачи
+            order_created.delay(order.id)
+            # set the order in the session
+            request.session['order_id']=order.id
+            # redirect to the payment
+        return redirect(reverse('payment:process'))
     else:
         form = OrderCreateForm
     return render(request, 'orders/order/create.html',

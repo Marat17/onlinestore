@@ -38,9 +38,6 @@ class Product(models.Model):
         return self.p_name
 
 
-class ElementInCart(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=1)
 
 
 class Cart(models.Model):
@@ -117,9 +114,3 @@ class Cart(models.Model):
             # удаление корзины из сессии
             del self.session[settings.CART_SESSION_ID]
             self.session.modified = True
-
-
-class User(models.Model):
-    name = models.CharField(max_length=25)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    element = models.ForeignKey(ElementInCart, on_delete=models.CASCADE)
