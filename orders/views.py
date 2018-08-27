@@ -22,7 +22,7 @@ def order_create(request):
             # запуск асинхронной задачи
             order_created.delay(order.id)
             # set the order in the session
-            request.session['order_id']=order.id
+            request.session['order_id'] = order.id
             # redirect to the payment
         return redirect(reverse('payment:process'))
     else:
