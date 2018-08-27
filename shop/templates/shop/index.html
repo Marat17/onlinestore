@@ -7,20 +7,14 @@
 
 <h1> Categories </h1>
 
-{% if allcategories %}
+     {% if allcategories %}
     <ul>
     {% for cat in allcategories %}
-        <li><p><a href='/shop/category/{{ cat.slug }}/'>{{ cat.c_name }}</a></p></li><hr>
+        <h2><a href='/shop/category/{{ cat.slug }}/'><span>Buy {{ cat.c_name }}</span></a></h2>
     {% endfor %}
     </ul>
-{% else %}
+    {% else %}
     <p>No categories in the store yet.</p>
-{% endif %}
-
-<a href="/shop/register/">Create account</a><br>
-<a href="/shop/login/">Log in</a><br>
-<a href="/shop/cart/">My cart</a>
-
-</body>
+    {% endif %}
 {% endblock %}
 

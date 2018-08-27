@@ -9,14 +9,13 @@
 	{% if product %}
 		<h1>{{ product.p_name }}</h1>
         <ul><p>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}</p><br>
-			<a href='/shop/category/{{ product.category.slug }}/'>{{ product.category.c_name }}</a></ul>
 	{% else %}
 		This specified product does not exist
 	{% endif %}
 		<a href="{{ product.get_absolute_url }}">
                     <img src="{% if product.image %}{{ product.image.url }}
                     {% else %}{% static 'shop/no_image.png' %}
-                    {% endif %}">
+                    {% endif %}" width="200" height="222">
         </a>
 
 	<form action="{% url 'cart_add' product.id %}" method="post">
@@ -24,9 +23,7 @@
     {% csrf_token %}
     <input type="submit" value="Add to cart">
 </form>
+			<a href='/shop/category/{{ product.category.slug }}/'>Back to {{ product.category.c_name }}</a></ul>
 	</div>
-	<div>
-			<a href="/shop/">Main page</a><br />
-    </div>
 </body>
 {% endblock %}
