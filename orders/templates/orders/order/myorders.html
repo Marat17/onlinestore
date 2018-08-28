@@ -1,0 +1,30 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Your orders
+{% endblock %}
+{% block content %}
+    <h1>Your orders</h1>
+<body>
+	<div>
+        {% if orders %}
+			<ul>
+			{% for order in orders %}
+                <li>When created: {{ order.created }}
+                    Who placed it: {{ order.user }}</li><hr>
+            {% endfor %}
+			</ul>
+		{% else %}
+			<strong>You didn't place any orders</strong>
+		{% endif %}
+	{% if orders %}
+		<h1>{{ orders.user }}</h1>
+        <h1>{{ orders.created }}</h1>
+        <h1>{{ orders.get_total_cost }}</h1>
+    {% else %}
+        <strong>You didn't place any orders</strong>
+    {% endif %}
+	</div>
+
+</body>
+{% endblock %}
