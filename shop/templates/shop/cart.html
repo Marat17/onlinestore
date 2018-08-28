@@ -45,11 +45,12 @@
         </tr>
         </tbody>
     </table>
-    <p class="text-right">
-        <a href="{% url 'index' %}" class="button light">Continue shopping</a>
-    </p>
+
+<a href="{% url 'index' %}" class="button light">Continue shopping</a><br>
+<a href="{% url 'cart_remove_all' %}">Clean the Cart</a><br>
 <a href="{% url 'orders:order_create' %}" class="button">
     Checkout
 </a>
+
 
 {% endblock %}

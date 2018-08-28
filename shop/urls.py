@@ -11,4 +11,5 @@ urlpatterns = [
 	re_path(r'^cart/$', views.cart_detail, name = 'cart'),
 	re_path(r'^add/(?P<product_id>\d+)/$', views.cart_add, name='cart_add'),
 	re_path(r'^remove/(?P<product_id>\d+)/$', views.cart_remove, name='cart_remove'),
+	re_path(r'^clean/$', views.cart_remove_all, name='cart_remove_all'),
 ]
