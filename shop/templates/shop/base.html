@@ -35,7 +35,11 @@ type="image/x-icon">
                         <ul>
                             <li><a href="{% url 'cart' %}"><i class="fa fa-user"></i> My Cart</a></li>
                             <li><a href="{% url 'orders:order_create' %}" class="button"><i class="fa fa-user"></i> Checkout</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a></li>
+                            {% else %}
                             <li><a href="/shop/login/"><i class="fa fa-user"></i> Login</a></li>
+                            {% endif %}
                             <li><a href="/shop/register/"><i class="fa fa-user"></i> Create account</a></li>
                         </ul>
                     </div>

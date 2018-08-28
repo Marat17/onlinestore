@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from decimal import Decimal
 from django.conf import settings
 
+
 class Category(models.Model):
     c_name = models.CharField(max_length=80)
     slug = models.SlugField(unique=True)
@@ -36,8 +37,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.p_name
-
-
 
 
 class Cart(models.Model):
