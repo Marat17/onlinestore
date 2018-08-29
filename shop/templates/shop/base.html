@@ -79,7 +79,7 @@
                         {{ total_items }} item{{ total_items|pluralize }},
                             ${{ cart.get_total_price }}</a></h2>
                         {% else %}
-                        <h2>Your cart is empty.</h2>
+                        <h2>Your cart is empty</h2>
                         {% endif %}
                         {% endwith %}
 						<a href="{% url 'cart' %}" class="button">Go to My Cart</a>
