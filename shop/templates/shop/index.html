@@ -39,21 +39,4 @@
 					</div>
 				</div>
 
-<!-- Cart below everything -->
-				<div id="promo-wrapper">
-					<section id="promo">
-                        {% with total_items=cart|length %}
-                        {% if cart|length > 0 %}
-                        <h2>Your cart:
-                        <a href="{% url 'cart' %}">
-                        {{ total_items }} item{{ total_items|pluralize }},
-                        ${{ cart.get_total_price }}</h2>
-                        </a>
-                        {% else %}
-                        <h2>Your cart is empty.</h2>
-                        {% endif %}
-                        {% endwith %}
-						<a href="{% url 'cart' %}" class="button">Go to My Cart</a>
-					</section>
-				</div>
 {% endblock %}
