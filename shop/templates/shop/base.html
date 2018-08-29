@@ -41,6 +41,9 @@ type="image/x-icon">
                             <li><a href="/shop/login/"><i class="fa fa-user"></i> Login</a></li>
                             {% endif %}
                             <li><a href="/shop/register/"><i class="fa fa-user"></i> Create account</a></li>
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'orders:show_orders' %}"><i class="fa fa-user"></i> My orders</a></li>
+                            {% endif %}
                         </ul>
                     </div>
 <div id="content">
