@@ -3,13 +3,26 @@
 {% block title %}Registration{% endblock %}
 
 {% block content %}
-  <body>
-  <h1>You need an account to place orders</h1>
-    <form action="" method="post">
-      {% csrf_token %}
-      <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
-      {{ form.as_p }}
-      <button type="submit">Register</button>
-    </form>
-  </body>
+
+<section id="hero" class="container">
+    <header>
+      <h2>You can create a personal account here</h2>
+    </header>
+   <p>If you already have one, use <a href="/shop/login/"><strong>Log In</strong></a> page to log in</p>
+</section>
+</div>
+</div>
+
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+<h1>Create a New account</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+                    </div>
+                </div>
+
 {% endblock %}
