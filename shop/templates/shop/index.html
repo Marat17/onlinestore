@@ -4,23 +4,56 @@
 
 {% block content %}
 
-
-
-
-
-
-<body>
-
-<h1> Categories </h1>
-
-     {% if allcategories %}
-    <ul>
-    {% for cat in allcategories %}
-        <h2><a href='/shop/category/{{ cat.slug }}/'><span>Buy {{ cat.c_name }}</span></a></h2>
-    {% endfor %}
+<section id="hero" class="container">
+    <header>
+        <h2>MyShop is the first website
+        <br />
+        that I've written using <a href='https://www.djangoproject.com'>Django Framework</a></h2>
+    </header>
+    <p>I hope it works</p>
+    <ul class="actions">
+        <li><a href="/shop/register/" class="button">Big Button to create a new account</a></li>
     </ul>
-    {% else %}
-    <p>No categories in the store yet.</p>
-    {% endif %}
-{% endblock %}
+</section>
+</div>
+</div>
 
+<!-- Features 1 -->
+				<div class="wrapper">
+					<div class="container">
+						<div class="row">
+                            {% for category in allcategories %}
+							<section class="col-6 col-12-narrower feature">
+								<header>
+                                    <ul>
+                                    <h2>{{ category.c_name }}</h2>
+                                    </ul>
+                                    </header>
+								<p>You can buy some nice {{ category.c_name }} here <br>(No, you can't, but you can pretend that you're buying them)</p>
+								<ul class="actions">
+									<li><a href='/shop/category/{{ category.slug }}/' class="button">Buy {{ category.c_name }}</a></li>
+								</ul>
+							</section>
+                            {% endfor %}
+						</div>
+					</div>
+				</div>
+
+<!-- Cart below everything -->
+				<div id="promo-wrapper">
+					<section id="promo">
+                        {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                        <h2>Your cart:
+                        <a href="{% url 'cart' %}">
+                        {{ total_items }} item{{ total_items|pluralize }},
+                        ${{ cart.get_total_price }}</h2>
+                        </a>
+                        {% else %}
+                        <h2>Your cart is empty.</h2>
+                        {% endif %}
+                        {% endwith %}
+						<a href="{% url 'cart' %}" class="button">Go to My Cart</a>
+					</section>
+				</div>
+{% endblock %}

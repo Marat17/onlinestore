@@ -60,58 +60,7 @@
 			<script src="{% static 'shop/breakpoints.min.js' %}"></script>
 			<script src="{% static 'shop/util.js' %}"></script>
 			<script src="{% static 'shop/main.js' %}"></script>
-                </div>
-    </div>
 <div id="content">
     {% block content %}
     {% endblock %}
 </div>
-</body>
-</html>
-
-
-
-
-
-
-<!--<div id="header">
-    <a href="/" class="logo"><h1>My shop</h1></a>
-</div>
-<div id="subheader">
-    <div class="cart">
-    {% with total_items=cart|length %}
-        {% if cart|length > 0 %}
-            <i>Your cart:
-            <a href="{% url 'cart' %}">
-                {{ total_items }} item{{ total_items|pluralize }},
-                    ${{ cart.get_total_price }}</i>
-            </a>
-        {% else %}
-            <i>Your cart is empty.</i>
-        {% endif %}
-    {% endwith %}
-    </div>
-</div>
-    <div class="header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="user-menu">
-                        <ul>
-                            <li><a href="{% url 'cart' %}"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="{% url 'orders:order_create' %}" class="button"><i class="fa fa-user"></i> Checkout</a></li>
-                            {% if user.is_authenticated %}
-                            <li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a></li>
-                            {% else %}
-                            <li><a href="/shop/login/"><i class="fa fa-user"></i> Login</a></li>
-                            {% endif %}
-                            <li><a href="/shop/register/"><i class="fa fa-user"></i> Create account</a></li>
-                            {% if user.is_authenticated %}
-                            <li><a href="{% url 'orders:show_orders' %}"><i class="fa fa-user"></i> My orders</a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-
-</div>
-</body>
-</html>-->
