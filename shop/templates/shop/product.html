@@ -4,26 +4,32 @@
 {% load static %}
 
 {% block content %}
-<body>
-	<div>
-	{% if product %}
-		<h1>{{ product.p_name }}</h1>
-        <ul><p>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}</p><br>
-	{% else %}
-		This specified product does not exist
-	{% endif %}
-		<a href="{{ product.get_absolute_url }}">
-                    <img src="{% if product.image %}{{ product.image.url }}
-                    {% else %}{% static 'shop/no_image.png' %}
-                    {% endif %}" width="200" height="222">
-        </a>
+<section id="hero" class="container">
+    <header>
+        <h2>This page just shows you
+        <br />
+        the {{ product.p_name }} and tells you all I know about it</h2>
+    </header>
+</section>
+</div>
+</div>
 
-	<form action="{% url 'cart_add' product.id %}" method="post">
-    {{ cart_product_form }}
-    {% csrf_token %}
-    <input type="submit" value="Add to cart">
-</form>
-			<a href='/shop/category/{{ product.category.slug }}/'>Back to {{ product.category.c_name }}</a></ul>
-	</div>
-</body>
+<div class="wrapper">
+					<section class="container">
+						<header class="major">
+							<h2>{{ product.p_name }}</h2>
+							<p>Price: {{ product.p_price }}<br>Description: {{ product.p_description }}</p>
+						</header>
+						<div class="row features">
+							<section class="col-4 col-12-narrower feature">
+									<img src={{ product.image.url }} alt ='' width="350" height="300"/>
+								<p>You definitely want to buy it</p>
+							</section><br>
+						<form action="{% url 'cart_add' product.id %}" method="post">
+						{{ cart_product_form }}
+						{% csrf_token %}
+						<input type="submit" value="Add to cart">
+						</form>
+					</section>
+				</div>
 {% endblock %}
