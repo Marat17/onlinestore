@@ -38,7 +38,11 @@
                                     {% endif %}
 
                                     <li>
+                                        {% if user.is_authenticated %}
+                                        <a href="{% url 'orders:show_orders'%}">My Account</a>
+                                        {% else %}
                                         <a href="{% url 'register' %}">My Account</a>
+                                        {% endif %}
                                         <ul>
                                             <li><a href="/shop/register/">Create account</a></li>
                                             {% if user.is_authenticated %}
@@ -73,8 +77,7 @@
                         <h2>Your cart:
                         <a href="{% url 'cart' %}">
                         {{ total_items }} item{{ total_items|pluralize }},
-                        ${{ cart.get_total_price }}</h2>
-                        </a>
+                            ${{ cart.get_total_price }}</a></h2>
                         {% else %}
                         <h2>Your cart is empty.</h2>
                         {% endif %}

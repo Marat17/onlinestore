@@ -4,27 +4,33 @@
     Your orders
 {% endblock %}
 {% block content %}
+<section id="hero" class="container">
+    <header>
+      <h2>You can see your past orders here</h2>
+    </header>
+   <p>And the time when they were placed</p>
+</section>
+</div>
+</div>
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
     <h1>Your orders</h1>
 <body>
 	<div>
         {% if orders %}
 			<ul>
 			{% for order in orders %}
-                <li>When created: {{ order.created }}
-                    Who placed it: {{ order.user }}</li><hr>
+                <li>Created: {{ order.created }}
+                    Who placed it: {{ order.user }}
+                    It costed: {{ order.get_total_cost }}
+                    What was ordered: {{ order.orderitem.product.p_name }}</li><hr>
             {% endfor %}
 			</ul>
 		{% else %}
 			<strong>You didn't place any orders</strong>
 		{% endif %}
-	{% if orders %}
-		<h1>{{ orders.user }}</h1>
-        <h1>{{ orders.created }}</h1>
-        <h1>{{ orders.get_total_cost }}</h1>
-    {% else %}
-        <strong>You didn't place any orders</strong>
-    {% endif %}
-	</div>
 
 </body>
+                                                                    </div>
+                </div>
 {% endblock %}
