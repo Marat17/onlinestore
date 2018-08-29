@@ -3,13 +3,25 @@
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
+<section id="hero" class="container">
+    <header>
+      <h2>This is the checkout page</h2>
+    </header>
+   <p>Fill this form and you will be redirected to process the payment</p>
+</section>
+</div>
+</div>
+
+
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
     <h1>Checkout</h1>
     <div class="order-info">
         <h3>Your order</h3>
         <ul>
             {% for item in cart %}
                 <li>
-                    {{ item.quantity }}x {{ item.product.name }}
+                    {{ item.quantity }} {{ item.product.p_name }}
                     <span>${{ item.total_price }}</span>
                 </li>
             {% endfor %}
@@ -21,4 +33,7 @@
         <p><input type="submit" value="Place order"></p>
         {% csrf_token %}
     </form>
+                                            </div>
+                </div>
+
 {% endblock %}
