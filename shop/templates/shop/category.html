@@ -3,24 +3,36 @@
 {% block title %}Category{% endblock %}
 
 {% block content %}
-<body>
-	<div>
-	{% if category %}
-		<h1>{{ category.c_name }}</h1>
-		{% if products %}
-			<ul>
-			{% for product in products %}
-                <li><a href='/shop/product/{{ product.slug }}/'>{{ product.p_name }}<br>
-					Price: {{ product.p_price }}</a></li><hr>
-            {% endfor %}
-			</ul>
-		{% else %}
-			<strong>No pages currently in category.</strong>
-		{% endif %}
-	{% else %}
-		This specified category does not exist
-	{% endif %}
-	</div>
 
-</body>
+<section id="hero" class="container">
+    <header>
+        <h2>This page lists
+        <br />
+        all the {{ category.c_name }}</h2>
+    </header>
+</section>
+</div>
+</div>
+
+			<!-- Features 1 -->
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+			{% for product in products %}
+			<section class="col-6 col-12-narrower feature">
+				<header>
+					<h2>{{ product.p_name }}</h2>
+					<h3>Price: {{ product.p_price }}</h3>
+				</header>
+				<p>{{ product.p_description }}</p>
+				<ul class="actions">
+					<a href='/shop/product/{{ product.slug }}/' class="button">Learn more about {{ product.p_name }} and see it<br></a>
+				</ul>
+			</section>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+
 {% endblock %}
