@@ -2,14 +2,79 @@
 {% load static %}
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title>{% block title %}My shop{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
-    <link rel="shortcut icon" href="{% static 'shop/favicon.ico' %}"
-type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'shop/favicon.ico' %}" type="image/x-icon">
 </head>
-<body>
-<div id="header">
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="/">My Shop</a></h1>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li>
+										<a href="/">Categories</a>
+										<ul>{% for category in allcategories %}
+											<li><a href='/shop/category/{{ category.slug }}/'>{{ category.c_name }}</a></li>
+											{% endfor %}
+										</ul>
+									</li>
+
+									<li><a href="{% url 'cart' %}">My Cart</a></li>
+
+                                    {% if user.is_authenticated %}
+                                    <li  class="break"><a href="{% url 'orders:show_orders' %}">My Orders</a></li>
+                                    {% else %}
+                                    <li  class="break"><a href="/shop/register/">My Orders</a></li>
+                                    {% endif %}
+
+                                    <li>
+                                        <a href="{% url 'register' %}">My Account</a>
+                                        <ul>
+                                            <li><a href="/shop/register/">Create account</a></li>
+                                            {% if user.is_authenticated %}
+                                            <li><a href="{% url 'logout' %}"><i class="fa fa-user"></i> Logout</a></li>
+                                            {% else %}
+                                            <li><a href="/shop/login/"><i class="fa fa-user"></i> Login</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </li>
+								</ul>
+							</nav>
+
+					</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'shop/jquery.min.js' %}"></script>
+			<script src="{% static 'shop/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'shop/browser.min.js' %}"></script>
+			<script src="{% static 'shop/breakpoints.min.js' %}"></script>
+			<script src="{% static 'shop/util.js' %}"></script>
+			<script src="{% static 'shop/main.js' %}"></script>
+                </div>
+    </div>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
+
+
+
+
+
+
+<!--<div id="header">
     <a href="/" class="logo"><h1>My shop</h1></a>
 </div>
 <div id="subheader">
@@ -46,9 +111,7 @@ type="image/x-icon">
                             {% endif %}
                         </ul>
                     </div>
-<div id="content">
-    {% block content %}
-    {% endblock %}
+
 </div>
 </body>
-</html>
+</html>-->
