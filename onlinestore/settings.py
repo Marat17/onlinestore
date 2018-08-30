@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paypal.standard.ipn',
     'payment',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -134,7 +135,6 @@ STATIC_URL = '/static/'
 
 CART_SESSION_ID = 'cart'
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -162,3 +162,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = 'AKIAJJNPVTLUWRHPNBKA'
+AWS_SECRET_ACCESS_KEY = 'cwyxau28QtAJWtN3PP0EBJEfriYQATR9m9V0MHBx'
+AWS_STORAGE_BUCKET_NAME = 'mybucketfordjangomediafiles'
+MEDIA_URL = 'http://%s.s3.amazonaws.com/your-folder/' % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
