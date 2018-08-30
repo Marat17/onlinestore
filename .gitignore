@@ -107,15 +107,8 @@ venv.bak/
 
 onlinestore/__pycache__/
 /.idea/
-shop/migrations/0001_initial.py
-shop/migrations/0002_auto_20180801_2030.py
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/onlinestore.iml
 /.idea/vcs.xml
 /.idea/workspace.xml
-shop/migrations/0003_product_slug.py
-shop/migrations/0004_product_url.py
-shop/migrations/0005_category_url.py
-shop/migrations/0006_auto_20180803_0006.py
-shop/migrations/0007_auto_20180803_0049.py
