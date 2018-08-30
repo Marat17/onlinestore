@@ -14,7 +14,8 @@
 </div>
 				<div id="footer-wrapper">
 					<div id="footer" class="container">
-    <h1>Your orders:</h1>
+    <h1>Current user: {{ request.user }}</h1>
+    <h2>Your orders: </h2>
 
 <div>
     {% if orders %}
@@ -30,7 +31,7 @@
             </ul>
             {% endfor %}
     {% else %}
-	<strong>You didn't place any orders</strong>
+	<strong>You haven't placed any orders yet</strong>
 	{% endif %}
         </ul>
 </div>

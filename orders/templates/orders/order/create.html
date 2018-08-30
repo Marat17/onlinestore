@@ -21,8 +21,7 @@
         <ul>
             {% for item in cart %}
                 <li>
-                    {{ item.quantity }} {{ item.product.p_name }}
-                    <span>${{ item.total_price }}</span>
+                    {{ item.product.p_name }} | {{ item.quantity }} | Price: {{ item.total_price }}
                 </li>
             {% endfor %}
         </ul>
