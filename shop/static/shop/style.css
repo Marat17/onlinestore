@@ -2073,7 +2073,7 @@ input, select, textarea {
 			top: 0;
 			z-index: 1;
 			box-shadow: inset 0px 0px 0px 1px #e8e8e8;
-			background: #f6f8fb url("static/shop/images/image-wrapper.svg");
+			background: #f6f8fb url("images/image-wrapper.svg");
 		}
 
 	#header-wrapper {
