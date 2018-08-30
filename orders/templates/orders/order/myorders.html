@@ -1,7 +1,7 @@
 {% extends "shop/base.html" %}
 {% load static %}
 {% block title %}
-    Your orders
+    Orders
 {% endblock %}
 {% block content %}
 <section id="hero" class="container">
@@ -14,28 +14,26 @@
 </div>
 				<div id="footer-wrapper">
 					<div id="footer" class="container">
-    <h1>Your orders</h1>
+    <h1>Your orders:</h1>
 
-
-	<div>
-        {% if orders %}
-			<ul>
-                {% for order in orders %}
-                <li>Created: {{ order.created }}
-                    Was placed by: {{ order.user }}
-                    It costed: {{ order.get_total_cost }}
-                </li><hr>
-                {% endfor %}
-
-			</ul>
-		{% else %}
-			<strong>You didn't place any orders</strong>
-		{% endif %}
-    </div>
+<div>
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+            {{ order.created }}
+            <ul>
+            {% for item in order.items.all %}
+            <li>{{ item.product.p_name }} | {{ item.quantity }} | {{ item.get_cost }}</li>
+            {% endfor %}
+            Total: {{ order.get_total_cost }}
+            <hr>
+            </ul>
+            {% endfor %}
+    {% else %}
+	<strong>You didn't place any orders</strong>
+	{% endif %}
+        </ul>
+</div>
                     </div>
                 </div>
-
-
-
-
 {% endblock %}
