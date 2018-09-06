@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from decimal import Decimal
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -23,7 +24,7 @@ class Product(models.Model):
     p_name = models.CharField(max_length=80)
     p_price = models.IntegerField()
     p_description = models.TextField(max_length=140)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = CloudinaryField('image')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True)
 

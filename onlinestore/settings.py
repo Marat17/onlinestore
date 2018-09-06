@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'payment',
     'storages',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+cloudinary.config(
+  cloud_name = "dl4ppk4eb",
+  api_key = os.environ['CLOUD_KEY'],
+  api_secret = os.environ['CLOUD_SECRET']
+)
