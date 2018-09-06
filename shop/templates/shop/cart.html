@@ -33,7 +33,7 @@
                 <td>
                         <img src="
                             {% if product.image %}
-                                {{ product.image.url }}
+                                {% cloudinary product.image width=200 heigh=300 crop="fill" %}
                             {% else %}
                                 {% static 'img/no_image.png' %}
                             {% endif %}" width="350" height="300">

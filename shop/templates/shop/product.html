@@ -23,7 +23,7 @@
 						</header>
 						<div class="row features">
 							<section class="col-4 col-12-narrower feature">
-								{% cloudinary product.image width=100 height=150 crop="fill" %}
+								{% cloudinary product.image width=200 heigh=300 crop="fill" %}
 								<p>You definitely want to buy it</p>
 							</section><br>
 						<form action="{% url 'cart_add' product.id %}" method="post">
