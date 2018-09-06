@@ -32,10 +32,8 @@ protobuf==3.6.1
 psycopg2==2.7.5
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
-pycryptodome==3.4.3
 pygame==1.9.3
 pyowm==2.8.0
-Pyrebase==3.0.27
 python-dateutil==2.7.3
 python-jwt==2.0.1
 pytz==2018.3
