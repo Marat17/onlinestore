@@ -32,12 +32,12 @@
         {% with product=item.product %}
             <tr>
                 <td>
-                        <img src="
+
                             {% if product.image %}
                                 {% cloudinary product.image width=200 heigh=300 crop="fill" %}
                             {% else %}
-                                {% static 'img/no_image.png' %}
-                            {% endif %}" width="350" height="300">
+                                <img src="{% static 'img/no_image.png' %}"
+                            {% endif %} width="350" height="300">
                 </td>
                 <td>{{ product.p_name }}</td>
                 <td>{{ item.quantity }}</td>
