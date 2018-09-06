@@ -35,9 +35,7 @@
 
                             {% if product.image %}
                                 {% cloudinary product.image width=200 heigh=300 crop="fill" %}
-                            {% else %}
-                                <img src="{% static 'img/no_image.png' %}"
-                            {% endif %} width="350" height="300">
+                            {% endif %}
                 </td>
                 <td>{{ product.p_name }}</td>
                 <td>{{ item.quantity }}</td>
