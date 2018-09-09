@@ -3,7 +3,7 @@ from django.urls import reverse
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from shop.models import Cart
-from .tasks import order_created
+from tasks import order_created
 
 
 def order_create(request):
