@@ -144,6 +144,11 @@ EMAIL_HOST_USER = "celerytest123@gmail.com"
 EMAIL_HOST_PASSWORD = "Celery123"
 EMAIL_USE_TLS = True
 
+#Heroku and Celery
+import os
+app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
+                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+
 #PayPal
 PAYPAL_RECEIVER_EMAIL = 'muhutdinov@hotmail.com'
 PAYPAL_TEST = True
