@@ -22,11 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='mainpage'),
+    path('shop/', include('shop.urls')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^payment/', include(('payment.urls', 'payment'), namespace='payment')),
     path('admin/', admin.site.urls),
     url(r'^orders/', include(('orders.urls', 'orders'), namespace='orders')),
-    path('shop/', include('shop.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
