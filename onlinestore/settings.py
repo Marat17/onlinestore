@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 't922r3)6b603!6xheb9ii0fo%k*8!)nph(h7%2k+wudq8hjdgf')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'afternoon-depths-90136.herokuapp.com',
@@ -153,6 +153,10 @@ app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERY_TASK_SERIALIZER = "json",
                 CELERY_ACCEPT_CONTENT = ["json", "msgpack"],
                 CELERYBEAT_SCHEDULER = 'celery.schedulers.DatabaseScheduler')
+
+import redis
+
+REDIS_POOL = redis.ConnectionPool(host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'])
 
 #PayPal
 PAYPAL_RECEIVER_EMAIL = 'muhutdinov@hotmail.com'
