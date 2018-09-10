@@ -139,22 +139,23 @@ CART_SESSION_ID = 'cart'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "celerytest123@gmail.com"
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-EMAIL_USE_TLS = True
+
 
 #Heroku and Celery
 import celery
 app = celery.Celery('onlinestore')
 app.config_from_object('django.conf:settings')
-app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+app.autodiscover_tasks(lambda: INSTALLED_APPS)
 app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERY_RESULT_BACKEND=os.environ['REDIS_URL'],
                 CELERY_TASK_SERIALIZER = "json",
                 CELERY_ACCEPT_CONTENT = ["json", "msgpack"],
-                CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler')
+                CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler',
+                EMAIL_HOST = 'smtp.gmail.com',
+                EMAIL_PORT = 587,
+                EMAIL_HOST_USER = "celerytest123@gmail.com",
+                EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD'],
+                EMAIL_USE_TLS = True)
 
 #PayPal
 PAYPAL_RECEIVER_EMAIL = 'muhutdinov@hotmail.com'
