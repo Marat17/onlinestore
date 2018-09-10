@@ -155,7 +155,7 @@ app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler')
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = os.environ['REDIS_PORT']
+EMAIL_PORT = 587
 EMAIL_HOST_USER = "celerytest123@gmail.com"
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
