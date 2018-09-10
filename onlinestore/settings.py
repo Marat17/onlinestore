@@ -154,6 +154,12 @@ app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERY_ACCEPT_CONTENT = ["json", "msgpack"],
                 CELERYBEAT_SCHEDULER = 'celery.schedulers.DatabaseScheduler')
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = os.environ['REDIS_PORT']
+EMAIL_HOST_USER = "celerytest123@gmail.com"
+EMAIL_HOST_PASSWORD = "Celery123"
+EMAIL_USE_TLS = True
+
 import redis
 
 REDIS_POOL = redis.ConnectionPool(host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'])
