@@ -150,12 +150,11 @@ import celery
 app = celery.Celery('onlinestore')
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
-import os
 app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
-                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
-CELERY_TASK_SERIALIZER = "json"
-CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'],
+                CELERY_TASK_SERIALIZER = "json",
+                CELERY_ACCEPT_CONTENT = ["json", "msgpack"],
+                CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler')
 
 #PayPal
 PAYPAL_RECEIVER_EMAIL = 'muhutdinov@hotmail.com'
