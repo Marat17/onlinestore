@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'payment',
     'celery',
+    'djcelery',
     'storages',
     'cloudinary',
 ]
