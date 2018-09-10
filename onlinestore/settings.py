@@ -153,10 +153,9 @@ app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
                 CELERY_TASK_SERIALIZER = "json",
                 CELERY_ACCEPT_CONTENT = ["json", "msgpack"],
                 CELERYBEAT_SCHEDULER = 'celery.schedulers.DatabaseScheduler',
-                EMAIL_HOST = 'smtp.gmail.com',
+                EMAIL_HOST = os.environ['EMAIL_HOST'],
                 EMAIL_PORT = 55029,
-
-                EMAIL_HOST_USER = "celerytest123@gmail.com",
+                EMAIL_HOST_USER = "h",
                 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD'],
                 EMAIL_USE_TLS = True)
 
