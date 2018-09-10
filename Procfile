@@ -1,2 +1,2 @@
 web: gunicorn onlinestore.wsgi --log-file -
-worker: python manage.py celery worker -B -l info
+worker: celery worker -A onlinestore -l info
