@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from orders.models import Order
 
 
-@task
+@app.task
 def order_created(order_id):
     """
     Задача для отправки уведомления по электронной почте при успешном создании заказа.
